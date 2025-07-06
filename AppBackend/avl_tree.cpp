@@ -5,7 +5,7 @@
 // Constructor
 ArbolAVL::ArbolAVL() : raiz(nullptr) {}
 
-// Inserci�n p�blica
+// Insercion
 void ArbolAVL::insertar(const std::string &zona, long ts)
 {
     raiz = insertarRecursivo(raiz, zona, ts);
