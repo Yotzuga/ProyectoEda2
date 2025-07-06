@@ -1,0 +1,26 @@
+.top-zone-report {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.top-zone-report button {
+    padding: 0.6rem 1.2rem;
+    background: #646cff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.top-zone-result {
+    margin-top: 1rem;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.top-zone-msg {
+    margin-top: 0.5rem;
+    color: #d32f2f;
+    font-weight: bold;
+}

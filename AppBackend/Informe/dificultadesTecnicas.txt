@@ -1,0 +1,93 @@
+----------------------------------------------------------------------------
+1. Problemas con la INTERFAZ GRÁFICA en aplicación de escritorio
+----------------------------------------------------------------------------
+Durante la fase inicial se intentó implementar la interfaz gráfica como una aplicación de escritorio en C++ utilizando Code::Blocks como entorno de desarrollo. Sin embargo, surgieron múltiples dificultades:
+
+⚠️ Dependencias complejas: Librerías gráficas como wxWidgets, Qt o GTK requieren configuración avanzada de compiladores y enlazadores (linkers).
+
+⚠️ Compatibilidad limitada: Estas librerías no siempre son portables entre Windows, Linux y macOS sin ajustes específicos.
+
+⚠️ Curva de aprendizaje alta: Frameworks gráficos en C++ implican tiempos de aprendizaje elevados.
+
+📌 Impacto: Se ralentizó el desarrollo y la UI no cumplía con los estándares de diseño modernos.
+
+✅ Solución adoptada:
+Se migró la interfaz a una aplicación web moderna usando Vite + React:
+
+Desarrollo ágil gracias a la modularidad de React.
+
+Compatibilidad inmediata en cualquier sistema operativo (acceso vía navegador).
+
+Integración sencilla de estilos con TailwindCSS o Material UI.
+
+Eliminación de problemas de compilación cruzada.
+
+----------------------------------------------------------------------------
+2. Problemas al conectar Backend con Frontend
+----------------------------------------------------------------------------
+Al integrar el backend en C++ (con estructuras de datos optimizadas) y el frontend web, surgieron estos problemas:
+
+❌ CORS bloqueado por navegadores: El frontend React no podía consumir la API del backend por política de seguridad.
+
+❌ Falta de soporte HTTP nativo en C++: No existe un middleware como Express (Node.js) o Flask (Python).
+
+❌ Formato de datos: Se necesitaba un formato estándar (JSON) para intercambiar datos entre ambos.
+
+📌 Impacto: El frontend no lograba comunicarse con el backend.
+
+✅ Solución adoptada:
+
+Se implementó un servidor REST en C++ usando cpp-httplib.
+
+Se añadieron cabeceras CORS al backend:
+
+pgsql
+Copiar
+Editar
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS
+Access-Control-Allow-Headers: Content-Type
+Se integró nlohmann/json para manejar JSON de forma eficiente.
+
+Se dejó abierta la posibilidad de migrar a Crow para proyectos más grandes.
+
+----------------------------------------------------------------------------
+3. Problemas de rendimiento y soluciones (AVL, Heap, Hash)
+----------------------------------------------------------------------------
+📌 Problemas detectados:
+🔥 Altas colisiones en HashTable con datos masivos (más de 10k usuarios).
+
+🔥 Heap lento al expandir memoria dinámica (duplicación de arrays grandes).
+
+🔥 AVL Tree con inserciones desbalanceadas cuando los timestamps eran muy cercanos.
+
+✅ Soluciones técnicas:
+HashTable:
+
+Se implementó Rehashing dinámico con carga máxima 0.7 para mantener O(1) en inserciones y búsquedas.
+
+Encadenamiento separado (listas enlazadas) para resolver colisiones.
+
+MaxHeap:
+
+Uso de expandir() al llegar a la capacidad máxima, duplicando tamaño con costo amortizado O(1).
+
+heapifyUp y heapifyDown optimizados para mantener la propiedad de MaxHeap.
+
+AVL Tree:
+
+Rotaciones simples y dobles (rotarIzquierda, rotarDerecha) para mantener balanceo en O(log n).
+
+Inserciones con timestamps distribuidos para evitar skew.
+
+----------------------------------------------------------------------------
+4. Conclusión técnica
+----------------------------------------------------------------------------
+La arquitectura final combina:
+✅ HashTable: acceso rápido O(1) promedio para usuarios.
+✅ MaxHeap: manejo eficiente de la cola de prioridad (inserción/extracción O(log n)).
+✅ AVL Tree: consultas por rango y zona con tiempos O(log n).
+✅ Frontend React: interfaz moderna, responsiva y multiplataforma.
+✅ Backend C++ REST API: eficiente y ligero gracias a cpp-httplib y nlohmann/json.
+
+🔑 Resultado: Sistema rápido, escalable y con una integración backend-frontend robusta.

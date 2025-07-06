@@ -1,0 +1,30 @@
+.queue-top5 {
+    margin: 1.5rem auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.queue-top5 table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0001;
+}
+
+.queue-top5 th,
+.queue-top5 td {
+    padding: 0.7rem;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.queue-top5 th {
+    background: #646cff;
+    color: white;
+}
+
+.queue-top5 tr:last-child td {
+    border-bottom: none;
+}

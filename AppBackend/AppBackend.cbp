@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="AppBackend" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc-mingw64" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/AppBackend" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc-mingw64" />
+				<Compiler>
+					<Add option="-pthread" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add library="ws2_32" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/AppBackend" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc-mingw64" />
+			</Target>
+		</Build>
+		<Unit filename="avl_tree.cpp" />
+		<Unit filename="data.json" />
+		<Unit filename="hash_table.cpp" />
+		<Unit filename="include/avl_tree.h" />
+		<Unit filename="include/hash_table.h" />
+		<Unit filename="include/httplib.h" />
+		<Unit filename="include/max_heap.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="max_heap.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
