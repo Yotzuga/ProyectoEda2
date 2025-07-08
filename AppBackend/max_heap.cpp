@@ -8,6 +8,8 @@ MaxHeap::MaxHeap(int cap_inicial)
     heap = new Elemento[capacidad];
 }
 
+// Destructor: libera la memoria dinámica
+// Se asegura de liberar el array dinámico que contiene los elementos del heap
 MaxHeap::~MaxHeap()
 {
     delete[] heap;
@@ -26,9 +28,12 @@ int MaxHeap::perfilAPrioridad(const std::string &perfil) const
         return 2;
     if (perfil == "publico-general")
         return 1;
-    return 0; // desconocido o perfil inv�lido
+    return 0; // desconocido o perfil inválido
 }
 
+// Duplicar la capacidad del array cuando está lleno
+// Crea un nuevo array con el doble de capacidad, copia los elementos existentes y libera el antiguo
+// Esta función se llama automáticamente cuando el heap está lleno
 void MaxHeap::expandir()
 {
     int nuevaCap = capacidad * 2;
@@ -37,7 +42,7 @@ void MaxHeap::expandir()
     {
         nuevo[i] = heap[i];
     }
-    delete[] heap;
+    delete[] heap; // Aquí se libera la memoria del array antiguo para evitar fugas de memoria
     heap = nuevo;
     capacidad = nuevaCap;
 }
@@ -115,13 +120,13 @@ Elemento MaxHeap::extraerMax()
 {
     if (tamanio == 0)
     {
-        return {0, 0, 0};
+        return {0, 0, 0}; // dni = 0 prioridad = 0 ts = 0
     }
-    Elemento root = heap[0]; // Extrae la raíz: el nodo con mayor prioridad
-    heap[0] = heap[tamanio - 1];
+    Elemento root = heap[0];     // Extrae la raíz: el nodo con mayor prioridad
+    heap[0] = heap[tamanio - 1]; // Reemplaza la raíz con el último elemento
     --tamanio;
     heapifyDown(0);
-    return root;
+    return root; // Retorna el elemento extraído
 }
 
 void MaxHeap::actualizarPrioridad(int idx, int nuevaPrio)

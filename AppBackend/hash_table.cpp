@@ -1,6 +1,5 @@
-// src/hash_table.cpp
 #include "hash_table.h"
-#include <iostream> // solo para debug
+#include <iostream>
 
 TablaHash::TablaHash(int tamano_inicial, float carga_maxima)
     : tam(tamano_inicial), usados(0), cargaMaxima(carga_maxima)
@@ -24,7 +23,7 @@ TablaHash::~TablaHash()
     }
     delete[] tabla;
 }
-
+// DNI % 17 = 54345985349853
 int TablaHash::hashFunc(long clave) const
 {
     long h = clave < 0 ? -clave : clave;

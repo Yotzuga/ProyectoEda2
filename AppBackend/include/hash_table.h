@@ -28,8 +28,8 @@ class TablaHash
 {
 private:
     NodoHash **tabla;  // arreglo de punteros a NodoHash
-    int tam;           // tama�o actual de la tabla
-    int usados;        // n�mero de elementos almacenados
+    int tam;           // tamaño actual de la tabla
+    int usados;        // numero de elementos almacenados
     float cargaMaxima; // umbral para rehashing
 
     void rehash();
@@ -42,7 +42,7 @@ public:
     TablaHash(int tamano_inicial = 17, float carga_maxima = 0.7f);
     ~TablaHash();
 
-    // Operaciones cl�sicas
+    // Operaciones clásicas
     void insertar(long dni, const std::string &perfil);
     NodoHash *buscar(long dni) const;
     bool validar(long dni) const;
@@ -51,7 +51,7 @@ public:
     void marcarEnCola(long dni, bool estado);
     void marcarAtendido(long dni, bool estado);
 
-    // M�todos de conteo
+    // Métodos de conteo que usan el perfil como clave y se usa en avl
     void incrementar(const std::string &clave);
     int obtenerConteo(const std::string &clave) const;
 
@@ -60,4 +60,4 @@ public:
     NodoHash *getBucket(int idx) const { return tabla[idx]; }
 };
 
-#endif // HASH_TABLE_H
+#endif

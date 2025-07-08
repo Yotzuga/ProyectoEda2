@@ -299,8 +299,8 @@ void cargarDatosIniciales(const std::string &path)
 int main()
 {
     Server svr;
-    // cargarDatosIniciales("data.json");
-    cargarDatosInicialesPruebaTecnica("data.json");
+     cargarDatosIniciales("data.json");
+    //cargarDatosInicialesPruebaTecnica("data.json");
 
     // Middleware CORS
     svr.set_pre_routing_handler([](const Request &req, Response &res)
@@ -354,7 +354,7 @@ int main()
         res.status = 201;
         res.set_content("Usuario creado", "text/plain"); });
 
-    // PUT /usuario/{dni} → actualizar perfil (y prioridad si aplica)
+    // PUT /usuario/{dni} → actualizar perfil
     svr.Put(R"(/usuario/(\d+))", [](const Request &req, Response &res)
             {
         if (req.body.empty()) {
@@ -403,7 +403,7 @@ int main()
         auto j = json::parse(req.body);
         long dni = j["dni"];
         long ts = j["ts"];
-        // Si ts es inválido (<=0 o menor a 1_000_000_000), usar timestamp actual
+        // Si ts es inválido
         if (ts <= 0 || ts < 1000000000) {
             ts = std::time(nullptr);
         }

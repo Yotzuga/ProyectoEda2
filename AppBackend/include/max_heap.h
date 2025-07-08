@@ -1,4 +1,4 @@
-// max_heap.h
+
 #ifndef MAX_HEAP_H
 #define MAX_HEAP_H
 
@@ -24,7 +24,7 @@ private:
     int izq(int i) const { return 2 * i + 1; }
     int der(int i) const { return 2 * i + 2; }
 
-    // Reorganiza hacia abajo para mantener la propiedad de max-heap
+    // Reorganiza hacia abajo para mantener la propiedad de max-heap al sacar la cabeza
     void heapifyDown(int i);
     // Reorganiza hacia arriba tras insertar un nuevo elemento
     void heapifyUp(int i);
@@ -47,7 +47,7 @@ public:
     void actualizarPrioridad(int idx, int nuevaPrio);
 
     // Devuelve un array con los 5 elementos de mayor prioridad
-    // Sin afectar el heap original; caller debe liberar la memoria
+    // Sin afectar el heap original
     Elemento *verTop5(int &outCount) const;
 
     // Comprueba si el heap está vacío
@@ -63,4 +63,4 @@ public:
     }
 };
 
-#endif // MAX_HEAP_H
+#endif

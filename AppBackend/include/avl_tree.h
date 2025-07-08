@@ -1,4 +1,4 @@
-// avl_tree.h
+
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
@@ -47,4 +47,4 @@ public:
     void mostrar();
 };
 
-#endif // AVL_TREE_H
+#endif

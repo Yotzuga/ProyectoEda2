@@ -1,4 +1,3 @@
-// avl_tree.cpp
 #include "avl_tree.h"
 #include <iostream>
 
@@ -30,7 +29,7 @@ NodoAVL *ArbolAVL::insertarRecursivo(NodoAVL *nodo, const std::string &zona, lon
     return reBalancear(nodo);
 }
 
-// NUEVO: actualizar altura y factor de balance en O(1)
+// actualizar altura
 void ArbolAVL::actualizarFactor(NodoAVL *nodo)
 {
     int h_izq = nodo->izquierdo ? nodo->izquierdo->altura : 0;
@@ -39,7 +38,7 @@ void ArbolAVL::actualizarFactor(NodoAVL *nodo)
     nodo->factor_balance = h_izq - h_der;
 }
 
-// Rebalanceo seg�n factor
+// Rebalanceo segun factor
 NodoAVL *ArbolAVL::reBalancear(NodoAVL *nodo)
 {
     actualizarFactor(nodo);
@@ -86,7 +85,7 @@ NodoAVL *ArbolAVL::rotarDerecha(NodoAVL *nodo)
     return l;
 }
 
-// Mostrar �rbol (in-order visual)
+// Mostrar arbol (in-order visual)
 void ArbolAVL::mostrar()
 {
     if (!raiz)
@@ -117,7 +116,7 @@ std::vector<NodoAVL *> ArbolAVL::rangoTiempos(long inicio, long fin)
     return out;
 }
 
-// Recursi�n para obtener nodos en rango
+// Recursion para obtener nodos en rango
 void ArbolAVL::rangoRec(NodoAVL *nodo, long inicio, long fin, std::vector<NodoAVL *> &out)
 {
     if (!nodo)
@@ -130,7 +129,7 @@ void ArbolAVL::rangoRec(NodoAVL *nodo, long inicio, long fin, std::vector<NodoAV
         rangoRec(nodo->derecho, inicio, fin, out);
 }
 
-// Zona con m�s entradas (usa TablaHash para conteo)
+// Zona con mas entradas (usa TablaHash para conteo)
 std::string ArbolAVL::zonaMasEntradas()
 {
     TablaHash cnt(101, 0.7f);
